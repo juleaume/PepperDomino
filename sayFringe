@@ -1,0 +1,15 @@
+from naoqi import ALProxy
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+
+    def onInput_onStart(self):
+        memProxy= ALProxy("ALMemory", "localhost",9559)
+        fringe=memProxy.getData("fringe")
+        self.onSay("You can play a " + str(fringe[0]) + " or a " + str(fringe[1]))
+
+
+    def onInput_onStop(self):
+        self.onUnload() #it is recommended to reuse the clean-up as the box is stopped
+        self.onStopped() #activate the output of the box
