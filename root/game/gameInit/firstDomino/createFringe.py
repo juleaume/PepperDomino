@@ -25,8 +25,11 @@ class MyClass(GeneratedClass):
             if dom not in hand: #if the detected domino is not in the hand
                 playH=False
                 if dom[0]==dom[1]: #if player is playing a double
-                    if dom[0]>max(doubles)[0] or doubles==[]: #if the player is playing a higher double than Pepper's
-                        playH=True #they can play
+                    if not doubles == []: #if pepper is playing a double
+                        if dom[0]>=max(doubles)[0]: #if the player is playing a higher double than Pepper's
+                            playH=True #they can play
+                    else:
+                        playH=True #humn can play
                 else: #if they are playing something else
                     if doubles==[]: #if Pepper has no double
                         if dom>max(hand): #if their card is higher than pepper's
