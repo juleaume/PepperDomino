@@ -18,7 +18,7 @@ class MyClass(GeneratedClass):
                 dom=token[0]
                 side=token[1]
                 if not (fringe[0]==dom[side] or fringe[1]==dom[side]):
-                    token=[]
+                    side=(token[1]+1)%2
 
         if token!=[]: #if the input is not empty
             if dom in hand: #if the domino is in the hand (just to be sure)
